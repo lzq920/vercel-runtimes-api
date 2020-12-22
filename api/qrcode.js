@@ -1,5 +1,5 @@
 const QRCode = require('qrcode')
-module.exports = (req, res) => {
+module.exports = async (req, res) => {
     const generateQR = async (text, options) => {
         return await QRCode.toDataURL(text, options)
     }
@@ -15,5 +15,5 @@ module.exports = (req, res) => {
         })
     }
     let url = await qrcode(req.query);
-    res.send(Buffer.from(url.split(',')[1], 'base64'))
+    res.send(Buffer.from(url.split(',')[1], 'base64'));
 }
