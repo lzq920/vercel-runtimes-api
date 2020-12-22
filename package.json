@@ -1,13 +1,14 @@
 {
-    "name": "vercel-runtimes",
-    "version": "1.0.0",
-    "description": "vercel-runtimes",
-    "main": "",
-    "scripts": {},
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "qrcode": "^1.4.4"
-    }
+  "name": "vercel-runtimes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "api/qrcode.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^5.5.0",
+    "qrcode": "^1.4.4"
+  }
 }
