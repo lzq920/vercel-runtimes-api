@@ -1,7 +1,7 @@
 const chrome = require('chrome-aws-lambda');
 const puppeteer = require('puppeteer-core');
 module.exports = async (req, res) => {
-    const { url = "https://vercel-runtimes-api.vercel.app", viewportWidth = "750px", viewportHeight = "1334px", type, quality, fullPage } = req.query;
+    const { url = "https://vercel-runtimes-api.vercel.app", viewportWidth = "750px", viewportHeight = "1334px" } = req.query;
     const browser = await puppeteer.launch({
         args: chrome.args,
         executablePath: await chrome.executablePath,
@@ -17,7 +17,7 @@ module.exports = async (req, res) => {
         height
     });
     await page.goto(url, { waitUntil: 'networkidle0' });
-    const screenshot = await page.screenshot({ type, quality, fullPage });
+    const screenshot = await page.screenshot();
     await browser.close();
     res.setHeader('content-type', 'application/octet-stream');
     res.send(Buffer.from(screenshot));
