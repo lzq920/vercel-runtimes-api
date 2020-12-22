@@ -1,0 +1,19 @@
+{
+    "version": 2,
+    "functions": {
+        "api/test.js": {
+            "memory": 3008,
+            "maxDuration": 60
+        }
+    },
+    "builds": [
+        {
+            "src": "api/qrcode.js",
+            "use": "@vercel/node"
+        },
+        {
+            "src": "api/screenshot.js",
+            "use": "@vercel/node"
+        }
+    ]
+}
