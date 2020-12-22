@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "api/qrcode.js",
-  "scripts": {
-  },
+  "scripts": {},
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "qrcode": "^1.4.4"
+  }
 }
