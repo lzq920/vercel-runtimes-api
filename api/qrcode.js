@@ -4,7 +4,7 @@ module.exports = async (req, res) => {
         return await QRCode.toDataURL(text, options)
     }
     const qrCode = async (query) => {
-        let { text, size, margin, dark, light } = query;
+        let { text = "https://vercel-runtimes-api.vercel.app", size, margin, dark, light } = query;
         return await generateQR(text, {
             width: size,
             margin,
