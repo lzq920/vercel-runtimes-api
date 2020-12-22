@@ -1,7 +1,7 @@
 const chrome = require('chrome-aws-lambda');
 const puppeteer = require('puppeteer-core');
 module.exports = async (req, res) => {
-    const { url = "https://vercel-runtimes-api.vercel.app", width = "750px", height = "1334px" } = req.query;
+    const { url = "https://vercel-runtimes-api.vercel.app", width = 750, height = 1334 } = req.query;
     const browser = await puppeteer.launch({
         args: chrome.args,
         executablePath: await chrome.executablePath,
