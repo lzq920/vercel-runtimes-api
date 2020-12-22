@@ -1,0 +1,11 @@
+{
+  "name": "vercel-runtimes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "api/qrcode.js",
+  "scripts": {
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
