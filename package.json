@@ -8,6 +8,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "puppeteer": "^5.5.0",
     "qrcode": "^1.4.4"
   }
 }

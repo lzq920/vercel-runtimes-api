@@ -3,7 +3,7 @@ module.exports = async (req, res) => {
     const generateQR = async (text, options) => {
         return await QRCode.toDataURL(text, options)
     }
-    const qrcode = async (query) => {
+    const qrCode = async (query) => {
         let { text, size, margin, dark, light } = query;
         return await generateQR(text, {
             width: size,
@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
             }
         })
     }
-    let url = await qrcode(req.query);
+    let url = await qrCode(req.query);
     res.setHeader('content-type', 'application/octet-stream');
     res.send(Buffer.from(url.split(',')[1], 'base64'));
 }
