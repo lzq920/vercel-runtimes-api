@@ -16,7 +16,7 @@ module.exports = async (req, res) => {
         width,
         height
     });
-    await page.goto(url, { waitUntil: 'networkidle0' });
+    await page.goto(url);
     const screenshot = await page.screenshot();
     await browser.close();
     res.setHeader('content-type', 'application/octet-stream');
