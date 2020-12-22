@@ -8,8 +8,6 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "chrome-aws-lambda": "^5.5.0",
-        "puppeteer-core": "^5.5.0",
         "qrcode": "^1.4.4"
     }
 }
