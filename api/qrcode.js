@@ -1,4 +1,7 @@
+const QRCode = require('qrcode')
 module.exports = (req, res) => {
-    const { name = 'World' } = req.query
-    res.send(`Hello ${name}!`)
+    const { text } = req.query;
+    QRCode.toDataURL(text, function (err, url) {
+        res.send(url);
+    });
 }
