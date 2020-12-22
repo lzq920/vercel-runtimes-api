@@ -15,5 +15,6 @@ module.exports = async (req, res) => {
         })
     }
     let url = await qrcode(req.query);
+    res.setHeader('content-type', 'application/octet-stream');
     res.send(Buffer.from(url.split(',')[1], 'base64'));
 }
