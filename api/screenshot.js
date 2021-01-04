@@ -1,25 +1,25 @@
-// const chrome = require('chrome-aws-lambda');
-// const puppeteer = require('puppeteer-core');
+const {
+    webkit,
+    devices
+} = require('playwright');
+const iPhone = devices['iPhone 6'];
 module.exports = async (req, res) => {
-    // const { url = "https://vercel-runtimes-api.vercel.app", width = 750, height = 1334 } = req.query;
-    // const browser = await puppeteer.launch({
-    //     args: chrome.args,
-    //     executablePath: await chrome.executablePath,
-    //     headless: chrome.headless,
-    //     defaultViewport: {
-    //         width: width,
-    //         height: height
-    //     }
-    // });
-    // const page = await browser.newPage();
-    // await page.setViewport({
-    //     width,
-    //     height
-    // });
-    // await page.goto(url);
-    // const screenshot = await page.screenshot();
-    // await browser.close();
-    // res.setHeader('content-type', 'application/octet-stream');
-    // res.send(Buffer.from(screenshot));
-    res.send("Hello World")
+    const { url = "https://baidu.com"} = req.query;
+    const browser = await webkit.launch();
+    const context = await browser.newContext({
+        ...iPhone,
+        permissions: ['geolocation'],
+        geolocation: {
+            latitude: 52.52,
+            longitude: 13.39
+        },
+        colorScheme: 'dark',
+        locale: 'de-DE'
+    });
+    const page = await context.newPage();
+    await page.goto(url);
+    const screenshot = await page.screenshot();
+    await browser.close();
+    res.setHeader('content-type', 'application/octet-stream');
+    res.send(Buffer.from(screenshot));
 }
