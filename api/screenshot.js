@@ -1,7 +1,7 @@
 const {
     webkit,
     devices
-} = require('playwright');
+} = require('playwright-webkit');
 const iPhone = devices['iPhone 6'];
 module.exports = async (req, res) => {
     const { url = "https://baidu.com"} = req.query;
