@@ -1,3 +1,4 @@
+const qiniu = require("qiniu");
 module.export = (req, res) => {
     const accessKey = process.env.accessKey;
     const secretKey = process.env.secretKey;
