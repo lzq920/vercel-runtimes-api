@@ -5,6 +5,7 @@
     "private": true,
     "license": "MIT",
     "dependencies": {
+        "qiniu": "^7.3.2",
         "qrcode": "^1.4.4"
     }
 }
