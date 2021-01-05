@@ -1,5 +1,5 @@
 const qiniu = require("qiniu");
-module.export = (req, res) => {
+module.exports = (req, res) => {
     const accessKey = process.env.accessKey;
     const secretKey = process.env.secretKey;
     const mac = new qiniu.auth.digest.Mac(accessKey, secretKey);
