@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
       const context = await browser.newContext();
       const page = await context.newPage();
       await page.goto(url);
-      await page.waitForTimeout(3000);
+      await page.waitForTimeout(1000);
       const screenshot = await page.screenshot({ type: "png" });
       res.setHeader("Content-Type", "image/png");
       res.status(200).send(screenshot);
