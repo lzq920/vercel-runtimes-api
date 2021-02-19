@@ -15,12 +15,19 @@
       margin: auto;
       overflow: hidden;
     }
+
+    .input-group {
+      z-index: 2000;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+    }
   </style>
 </head>
 
 <body>
   <div id="mse"></div>
-  <div>
+  <div class="input-group">
     <input type="text" id="url" placeholder="点播地址">
     <button id="play">播放</button>
   </div>
@@ -28,7 +35,7 @@
   <script src="//cdn.jsdelivr.net/npm/xgplayer-hls.js/browser/index.js" charset="utf-8"></script>
   <script>
     let player = new HlsJsPlayer({
-      el:document.querySelector('#mse'),
+      el: document.querySelector('#mse'),
       url: "",
       playsinline: true,
       whitelist: [
@@ -45,9 +52,8 @@
       keyShortcut: "on",
       errorTips: `请<span>刷新</span>试试`
     });
-    document.querySelector("#play").addEventListener("click",function(){
+    document.querySelector("#play").addEventListener("click", function () {
       player.url = document.querySelector("#url").value;
-      player.play();
     });
   </script>
 </body>
