@@ -1,22 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name=viewport
+    content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui">
+  <meta name="referrer" content="no-referrer">
+  <title>demo</title>
+  <style type="text/css">
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: auto;
+      overflow: hidden;
+    }
+  </style>
 </head>
 
 <body>
-      <div class="bg-gray-50">
-        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
-          <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-            <span class="block">二维码生成</span>
-            <span class="block text-indigo-600">https://vercel-runtimes-api.vercel.app/api/qrcode?text=https://www.baidu.com&margin=4&size=200</span>
-          </h2>
-        </div>
-      </div>
+  <div id="mse"></div>
+  <div>
+    <input type="text" id="url" placeholder="点播地址">
+    <button id="play">播放</button>
+  </div>
+  <script src="//cdn.jsdelivr.net/npm/xgplayer@1.1.4/browser/index.js" charset="utf-8"></script>
+  <script src="//cdn.jsdelivr.net/npm/xgplayer-hls.js/browser/index.js" charset="utf-8"></script>
+  <script>
+    let player = new HlsJsPlayer({
+      el:document.querySelector('#mse'),
+      url: "",
+      playsinline: true,
+      whitelist: [
+        ""
+      ],
+      volume: 0,
+      fluid: true,
+      playbackRate: [
+        0.5, 0.75, 1, 1.5, 2
+      ],
+      screenShot: true,
+      download: true,
+      pip: true,
+      keyShortcut: "on",
+      errorTips: `请<span>刷新</span>试试`
+    });
+    document.querySelector("#play").addEventListener("click",function(){
+      player.url = document.querySelector("#url").value;
+      player.play();
+    });
+  </script>
 </body>
 
 </html>
