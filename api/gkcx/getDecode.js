@@ -1,7 +1,6 @@
 const CryptoJS = require("crypto-js")
 const index = async (req, res) => {
     const { w, data } = req.body;
-    let str = data;
     let P = CryptoJS.PBKDF2("D23ABC@#56", "secret", {
         keySize: 8,
         iterations: 1e3,
@@ -13,7 +12,7 @@ const index = async (req, res) => {
         hasher: CryptoJS.algo.SHA256
     }).toString()
     let H = CryptoJS.lib.CipherParams.create({
-        ciphertext: CryptoJS.enc.Hex.parse(str)
+        ciphertext: CryptoJS.enc.Hex.parse(data)
     })
     let B = CryptoJS.AES.decrypt(H, CryptoJS.enc.Hex.parse(P), {
         iv: CryptoJS.enc.Hex.parse(Q)
