@@ -2,7 +2,6 @@ const CryptoJS = require("crypto-js")
 const index = async (req, res) => {
     const { w, data } = req.body;
     let str = data;
-    let w = w;
     let P = CryptoJS.PBKDF2("D23ABC@#56", "secret", {
         keySize: 8,
         iterations: 1e3,
