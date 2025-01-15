@@ -1,4 +1,5 @@
 const http = require("http");
+const url = require("url");
 module.export = (req, res) => {
   function getCurrentDateInYYYYMMDD() {
     const date = new Date();
@@ -9,15 +10,30 @@ module.export = (req, res) => {
   }
   const date = getCurrentDateInYYYYMMDD();
   const targetUrl = `https://free.datiya.com/uploads/${date}-clash.yaml`;
-  http.get(targetUrl, (targetRes) => {
-        // 设置响应头，将目标资源的响应头复制到客户端响应头
-        res.writeHead(targetRes.statusCode, targetRes.headers);
-        // 将目标资源的响应数据转发给客户端
-        targetRes.pipe(res);
-    }).on('error', (err) => {
-        // 错误处理
-        console.error('Error downloading file:', err);
-        res.status(500).send('Error downloading file');
-    });
+  const parsedUrl = url.parse(aAddress);
+        const options = {
+            hostname: parsedUrl.hostname,
+            port: parsedUrl.port || 80,
+            path: parsedUrl.path,
+            method: 'GET',
+            headers: req.headers
+        };
+
+        // 向 A 地址发起请求
+        const proxyReq = http.request(options, (proxyRes) => {
+            // 将 A 地址的响应头设置到客户端的响应头
+            res.writeHead(proxyRes.statusCode, proxyRes.headers);
+            // 将 A 地址的文件流转发给客户端
+            proxyRes.pipe(res);
+        });
+
+        // 处理请求错误
+        proxyReq.on('error', (err) => {
+            console.error('Error proxying request:', err);
+            res.status(500).send('Error proxying request');
+        });
+
+        // 结束请求
+        proxyReq.end();
 
 }
