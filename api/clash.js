@@ -1,5 +1,5 @@
 const http = require("http");
-module.export = function(){
+module.export = (req, res) => {
 function getCurrentDateInYYYYMMDD() {
     const date = new Date();
     const year = date.getFullYear();
